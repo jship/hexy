@@ -1,21 +1,6 @@
 # [hexy][]
 
-
--   Add a category to `package.yaml`. A list of categories is available on
-    Hackage at <http://hackage.haskell.org/packages>.
-
--   Rename `library/Example.hs` to whatever you want your top-level module to
-    be called. Typically this is the same as your package name but in
-    `CamelCase` instead of `kebab-case`.
-
-    -   Don't forget to rename the reference to it in
-        `executable/Main.hs`!
-
--   If you are on an older version of Stack (<1.0.4), delete `package.yaml` and
-    remove `/*.cabal` from your `.gitignore`.
-
-Once you've done that, start working on your project with the Stack commands
-you know and love.
+Fast, flexible hexadecimal pretty-printing.  This repo is the companion to the Writing Performant Haskell blog post series and is a work-in-progress.  The package will be iterated on throughout the blog post series to make it speedy.  It is intended to serve as a guide to a few of the optimization approaches we can take as Haskellers.
 
 ``` sh
 # Build the project.
@@ -30,7 +15,5 @@ stack bench
 # Generate documentation.
 stack haddock
 ```
-
-Thanks again, and happy hacking!
 
 [hexy]: https://github.com/jship/hexy
