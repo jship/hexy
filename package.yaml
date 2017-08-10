@@ -1,0 +1,46 @@
+benchmarks:
+  hexy-benchmarks:
+    dependencies:
+    - base
+    - hexy
+    - criterion
+    ghc-options:
+    - -rtsopts
+    - -threaded
+    - -with-rtsopts=-N
+    main: Main.hs
+    source-dirs: benchmark
+category: Text, Pretty Printer
+description: Fast, flexible hexadecimal pretty-printing.
+extra-source-files:
+- CHANGELOG.md
+- LICENSE.md
+- package.yaml
+- README.md
+- stack.yaml
+ghc-options: -Wall
+github: jship/hexy
+library:
+  dependencies:
+  - base
+  source-dirs: library
+license: MIT
+maintainer: Jason Shipman
+name: hexy
+synopsis: Hexadecimal pretty-printing
+tests:
+  hexy-test-suite:
+    dependencies:
+    - base
+    - hexy
+    - quickcheck-instances
+    - tasty
+    - tasty-auto
+    - tasty-quickcheck
+    ghc-options:
+    - -rtsopts
+    - -threaded
+    - -with-rtsopts=-N
+    main: Main.hs
+    source-dirs: test-suite
+version: '0.0.0'
