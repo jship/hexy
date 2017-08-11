@@ -1,3 +1,4 @@
+{-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE ScopedTypeVariables #-}
 
 module Test.HexyTest where
@@ -8,6 +9,7 @@ import qualified Data.Char as Char
 import Data.Int (Int, Int16, Int32, Int64, Int8)
 import qualified Data.List as List
 import Data.Monoid ((<>))
+import qualified Data.Text as Text
 import Data.Word (Word, Word16, Word32, Word64, Word8)
 import Foreign.Storable (Storable(..))
 import qualified Foreign.Storable as Storable
@@ -145,17 +147,17 @@ xshowpEqShowHexStorable :: (HexShow a, Integral a, Show a, Storable a) => Casing
 xshowpEqShowHexStorable c v = showHexyWithPrefix c v == "0x" <> paddedHexViaShowHex c v
 
 -- Functions to get results from the Hexy API
-showHexy :: HexShow a => Casing -> a -> String
+showHexy :: HexShow a => Casing -> a -> Text.Text
 showHexy Casing'Lower v = xshow v
 showHexy Casing'Upper v = xshowu v
 
-showHexyWithPrefix :: HexShow a => Casing -> a -> String
+showHexyWithPrefix :: HexShow a => Casing -> a -> Text.Text
 showHexyWithPrefix Casing'Lower v = xshowp v
 showHexyWithPrefix Casing'Upper v = xshowpu v
 
 -- Functions to get results from base Numeric module
-paddedHexViaShowHex :: forall a. (Integral a, Show a, Storable a) => Casing -> a -> String
-paddedHexViaShowHex c v = (List.genericReplicate numPadCharsNeeded '0') <> hexViaNumeric
+paddedHexViaShowHex :: forall a. (Integral a, Show a, Storable a) => Casing -> a -> Text.Text
+paddedHexViaShowHex c v = Text.pack ((List.genericReplicate numPadCharsNeeded '0') <> hexViaNumeric)
  where
   numPadCharsNeeded = lengthWithoutPrefix - List.genericLength hexViaNumeric
   lengthWithoutPrefix = fromIntegral (2 * Storable.sizeOf v) :: a
