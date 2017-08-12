@@ -41,6 +41,16 @@ class HexShow a where
 -- xshow (0x1f :: Word32) = "0000001f"
 -- @
 xshow :: HexShow a => a -> Text.Text
+{-# SPECIALIZE xshow :: Int -> Text.Text #-}
+{-# SPECIALIZE xshow :: Int8 -> Text.Text #-}
+{-# SPECIALIZE xshow :: Int16 -> Text.Text #-}
+{-# SPECIALIZE xshow :: Int32 -> Text.Text #-}
+{-# SPECIALIZE xshow :: Int64 -> Text.Text #-}
+{-# SPECIALIZE xshow :: Word -> Text.Text #-}
+{-# SPECIALIZE xshow :: Word8 -> Text.Text #-}
+{-# SPECIALIZE xshow :: Word16 -> Text.Text #-}
+{-# SPECIALIZE xshow :: Word32 -> Text.Text #-}
+{-# SPECIALIZE xshow :: Word64 -> Text.Text #-}
 xshow = Text.Lazy.toStrict . xshowl
 
 -- | Converts a value to a zero-padded, prefixed, lowercase hexadecimal strict 'Text.Text'.
@@ -49,6 +59,16 @@ xshow = Text.Lazy.toStrict . xshowl
 -- xshowp (0x1f :: Word32) = "0x0000001f"
 -- @
 xshowp :: HexShow a => a -> Text.Text
+{-# SPECIALIZE xshowp :: Int -> Text.Text #-}
+{-# SPECIALIZE xshowp :: Int8 -> Text.Text #-}
+{-# SPECIALIZE xshowp :: Int16 -> Text.Text #-}
+{-# SPECIALIZE xshowp :: Int32 -> Text.Text #-}
+{-# SPECIALIZE xshowp :: Int64 -> Text.Text #-}
+{-# SPECIALIZE xshowp :: Word -> Text.Text #-}
+{-# SPECIALIZE xshowp :: Word8 -> Text.Text #-}
+{-# SPECIALIZE xshowp :: Word16 -> Text.Text #-}
+{-# SPECIALIZE xshowp :: Word32 -> Text.Text #-}
+{-# SPECIALIZE xshowp :: Word64 -> Text.Text #-}
 xshowp = Text.Lazy.toStrict . xshowlp
 
 -- | Converts a value to a zero-padded, uppercase hexadecimal strict 'Text.Text'.
@@ -57,6 +77,16 @@ xshowp = Text.Lazy.toStrict . xshowlp
 -- xshowu (0x1f :: Word32) = "0000001F"
 -- @
 xshowu :: HexShow a => a -> Text.Text
+{-# SPECIALIZE xshowu :: Int -> Text.Text #-}
+{-# SPECIALIZE xshowu :: Int8 -> Text.Text #-}
+{-# SPECIALIZE xshowu :: Int16 -> Text.Text #-}
+{-# SPECIALIZE xshowu :: Int32 -> Text.Text #-}
+{-# SPECIALIZE xshowu :: Int64 -> Text.Text #-}
+{-# SPECIALIZE xshowu :: Word -> Text.Text #-}
+{-# SPECIALIZE xshowu :: Word8 -> Text.Text #-}
+{-# SPECIALIZE xshowu :: Word16 -> Text.Text #-}
+{-# SPECIALIZE xshowu :: Word32 -> Text.Text #-}
+{-# SPECIALIZE xshowu :: Word64 -> Text.Text #-}
 xshowu = Text.Lazy.toStrict . xshowlu
 
 -- | Converts a value to a zero-padded, prefixed, uppercase hexadecimal strict 'Text.Text'.
@@ -65,6 +95,16 @@ xshowu = Text.Lazy.toStrict . xshowlu
 -- xshowpu (0x1f :: Word32) = "0x0000001F"
 -- @
 xshowpu :: HexShow a => a -> Text.Text
+{-# SPECIALIZE xshowpu :: Int -> Text.Text #-}
+{-# SPECIALIZE xshowpu :: Int8 -> Text.Text #-}
+{-# SPECIALIZE xshowpu :: Int16 -> Text.Text #-}
+{-# SPECIALIZE xshowpu :: Int32 -> Text.Text #-}
+{-# SPECIALIZE xshowpu :: Int64 -> Text.Text #-}
+{-# SPECIALIZE xshowpu :: Word -> Text.Text #-}
+{-# SPECIALIZE xshowpu :: Word8 -> Text.Text #-}
+{-# SPECIALIZE xshowpu :: Word16 -> Text.Text #-}
+{-# SPECIALIZE xshowpu :: Word32 -> Text.Text #-}
+{-# SPECIALIZE xshowpu :: Word64 -> Text.Text #-}
 xshowpu = Text.Lazy.toStrict . xshowlpu
 
 -- | Converts a value to a zero-padded, lowercase hexadecimal lazy 'Text.Lazy.Text'.
@@ -73,6 +113,16 @@ xshowpu = Text.Lazy.toStrict . xshowlpu
 -- xshowl (0x1f :: Word32) = "0000001f"
 -- @
 xshowl :: HexShow a => a -> Text.Lazy.Text
+{-# SPECIALIZE xshowl :: Int -> Text.Lazy.Text #-}
+{-# SPECIALIZE xshowl :: Int8 -> Text.Lazy.Text #-}
+{-# SPECIALIZE xshowl :: Int16 -> Text.Lazy.Text #-}
+{-# SPECIALIZE xshowl :: Int32 -> Text.Lazy.Text #-}
+{-# SPECIALIZE xshowl :: Int64 -> Text.Lazy.Text #-}
+{-# SPECIALIZE xshowl :: Word -> Text.Lazy.Text #-}
+{-# SPECIALIZE xshowl :: Word8 -> Text.Lazy.Text #-}
+{-# SPECIALIZE xshowl :: Word16 -> Text.Lazy.Text #-}
+{-# SPECIALIZE xshowl :: Word32 -> Text.Lazy.Text #-}
+{-# SPECIALIZE xshowl :: Word64 -> Text.Lazy.Text #-}
 xshowl = Text.Lazy.Builder.toLazyText . xbuild
 
 -- | Converts a value to a zero-padded, prefixed, lowercase hexadecimal lazy 'Text.Lazy.Text'.
@@ -81,6 +131,16 @@ xshowl = Text.Lazy.Builder.toLazyText . xbuild
 -- xshowlp (0x1f :: Word32) = "0x0000001f"
 -- @
 xshowlp :: HexShow a => a -> Text.Lazy.Text
+{-# SPECIALIZE xshowlp :: Int -> Text.Lazy.Text #-}
+{-# SPECIALIZE xshowlp :: Int8 -> Text.Lazy.Text #-}
+{-# SPECIALIZE xshowlp :: Int16 -> Text.Lazy.Text #-}
+{-# SPECIALIZE xshowlp :: Int32 -> Text.Lazy.Text #-}
+{-# SPECIALIZE xshowlp :: Int64 -> Text.Lazy.Text #-}
+{-# SPECIALIZE xshowlp :: Word -> Text.Lazy.Text #-}
+{-# SPECIALIZE xshowlp :: Word8 -> Text.Lazy.Text #-}
+{-# SPECIALIZE xshowlp :: Word16 -> Text.Lazy.Text #-}
+{-# SPECIALIZE xshowlp :: Word32 -> Text.Lazy.Text #-}
+{-# SPECIALIZE xshowlp :: Word64 -> Text.Lazy.Text #-}
 xshowlp = Text.Lazy.Builder.toLazyText . prefixHex . xbuild
 
 -- | Converts a value to a zero-padded, uppercase hexadecimal lazy 'Text.Lazy.Text'.
@@ -89,6 +149,16 @@ xshowlp = Text.Lazy.Builder.toLazyText . prefixHex . xbuild
 -- xshowlu (0x1f :: Word32) = "0000001F"
 -- @
 xshowlu :: HexShow a => a -> Text.Lazy.Text
+{-# SPECIALIZE xshowlu :: Int -> Text.Lazy.Text #-}
+{-# SPECIALIZE xshowlu :: Int8 -> Text.Lazy.Text #-}
+{-# SPECIALIZE xshowlu :: Int16 -> Text.Lazy.Text #-}
+{-# SPECIALIZE xshowlu :: Int32 -> Text.Lazy.Text #-}
+{-# SPECIALIZE xshowlu :: Int64 -> Text.Lazy.Text #-}
+{-# SPECIALIZE xshowlu :: Word -> Text.Lazy.Text #-}
+{-# SPECIALIZE xshowlu :: Word8 -> Text.Lazy.Text #-}
+{-# SPECIALIZE xshowlu :: Word16 -> Text.Lazy.Text #-}
+{-# SPECIALIZE xshowlu :: Word32 -> Text.Lazy.Text #-}
+{-# SPECIALIZE xshowlu :: Word64 -> Text.Lazy.Text #-}
 xshowlu = Text.Lazy.Builder.toLazyText . xbuildu
 
 -- | Converts a value to a zero-padded, prefixed, uppercase hexadecimal lazy 'Text.Lazy.Text'.
@@ -97,6 +167,16 @@ xshowlu = Text.Lazy.Builder.toLazyText . xbuildu
 -- xshowlpu (0x1f :: Word32) = "0x0000001F"
 -- @
 xshowlpu :: HexShow a => a -> Text.Lazy.Text
+{-# SPECIALIZE xshowlpu :: Int -> Text.Lazy.Text #-}
+{-# SPECIALIZE xshowlpu :: Int8 -> Text.Lazy.Text #-}
+{-# SPECIALIZE xshowlpu :: Int16 -> Text.Lazy.Text #-}
+{-# SPECIALIZE xshowlpu :: Int32 -> Text.Lazy.Text #-}
+{-# SPECIALIZE xshowlpu :: Int64 -> Text.Lazy.Text #-}
+{-# SPECIALIZE xshowlpu :: Word -> Text.Lazy.Text #-}
+{-# SPECIALIZE xshowlpu :: Word8 -> Text.Lazy.Text #-}
+{-# SPECIALIZE xshowlpu :: Word16 -> Text.Lazy.Text #-}
+{-# SPECIALIZE xshowlpu :: Word32 -> Text.Lazy.Text #-}
+{-# SPECIALIZE xshowlpu :: Word64 -> Text.Lazy.Text #-}
 xshowlpu = Text.Lazy.Builder.toLazyText . prefixHex . xbuildu
 
 instance HexShow Int where
