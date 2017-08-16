@@ -1,9 +1,9 @@
 {-# LANGUAGE BangPatterns #-}
-{-# LANGUAGE MagicHash #-}
 
 module Hexy.Internal where
 
 import Control.Monad.ST (ST)
+import qualified Data.Char as Char
 import Data.Int (Int, Int8, Int16, Int32, Int64)
 import qualified Data.Text as Text
 import qualified Data.Text.Array as Text.Array
@@ -13,8 +13,6 @@ import qualified Data.Text.Internal.Unsafe.Char as Text.Internal.Unsafe.Char
 import Data.Word (Word, Word8, Word16, Word32, Word64)
 import Foreign.Storable (Storable(..))
 import qualified Foreign.Storable as Storable
-
-import GHC.Base (Char(..), Int(..), (<=#), (>=#), isTrue#, unsafeChr)
 
 showHexTextLower :: (Integral a, Show a, Storable a) => a -> Text.Text
 {-# SPECIALIZE showHexTextLower :: Int -> Text.Text #-}
@@ -86,13 +84,13 @@ unsafeDropHexPrefix :: Text.Text -> Text.Text
 unsafeDropHexPrefix (Text.Internal.Text arr _ len) = Text.Internal.Text arr 2 (len - 2)
 
 intToDigitLower :: Int -> Char
-intToDigitLower (I# i)
-  | isTrue# (i >=# 0#)  && isTrue# (i <=#  9#) = unsafeChr (48 + I# i)
-  | isTrue# (i >=# 10#) && isTrue# (i <=# 15#) = unsafeChr (97 + I# i - 10)
-  | otherwise = errorWithoutStackTrace ("Hexy.Internal.intToDigitLower: not a digit " ++ show (I# i))
+intToDigitLower i
+  | i >=  0 && i <=  9 = Text.Internal.Unsafe.Char.unsafeChr (fromIntegral $ Char.ord '0' + i)
+  | i >= 10 && i <= 15 = Text.Internal.Unsafe.Char.unsafeChr (fromIntegral $ Char.ord 'a' + i - 10)
+  | otherwise = errorWithoutStackTrace ("Hexy.Internal.intToDigitLower: not a digit " ++ show i)
 
 intToDigitUpper :: Int -> Char
-intToDigitUpper (I# i)
-  | isTrue# (i >=# 0#)  && isTrue# (i <=#  9#) = unsafeChr (48 + I# i)
-  | isTrue# (i >=# 10#) && isTrue# (i <=# 15#) = unsafeChr (65 + I# i - 10)
-  | otherwise = errorWithoutStackTrace ("Hexy.Internal.intToDigitUpper: not a digit " ++ show (I# i))
+intToDigitUpper i
+  | i >=  0 && i <=  9 = Text.Internal.Unsafe.Char.unsafeChr (fromIntegral $ Char.ord '0' + i)
+  | i >= 10 && i <= 15 = Text.Internal.Unsafe.Char.unsafeChr (fromIntegral $ Char.ord 'A' + i - 10)
+  | otherwise = errorWithoutStackTrace ("Hexy.Internal.intToDigitUpper: not a digit " ++ show i)
